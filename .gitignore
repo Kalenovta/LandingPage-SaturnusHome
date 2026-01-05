@@ -1,0 +1,9 @@
+/Back-End/vendor/
+/Back-End/.env
+/Back-End/storage/*.key
+/Back-End/public/storage
+/Back-End/node_modules/
+/Front-End/vendor/
+/Front-End/node_modules/
+/Front-End/build_local/
+.env

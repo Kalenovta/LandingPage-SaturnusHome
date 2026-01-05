@@ -1,0 +1,6 @@
+{
+    "require": {
+        "tightenco/jigsaw": "^1.8",
+        "tightenco/jigsaw-docs-template": "^1.2"
+    }
+}
