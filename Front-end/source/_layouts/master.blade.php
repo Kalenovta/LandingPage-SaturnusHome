@@ -10,7 +10,7 @@
         <meta property="og:title" content="{{ $page->title ?  $page->title . ' | ' : '' }}{{ $page->siteName }}"/>
         <meta property="og:description" content="{{ $page->description ?? $page->siteDescription }}"/>
         <meta property="og:url" content="{{ $page->getUrl() }}"/>
-        <meta property="og:image" content="/assets/img/logo.png"/>
+        <meta property="og:image" content="/assets/img/saturn.svg"/>
         <meta property="og:type" content="website"/>
 
         <meta name="twitter:image:alt" content="{{ $page->siteName }}">
@@ -34,7 +34,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet" />
-
+        
         @viteRefresh()
         <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
         <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
@@ -44,14 +44,25 @@
         @endif
     </head>
 
-    <body class="flex flex-col justify-between min-h-screen bg-gray-100 text-gray-800 leading-normal font-sans">
+    <body class="flex flex-col justify-between min-h-screen bg-gray-900 text-gray-300 leading-normal font-sans">
         <header class="flex items-center shadow-sm bg-white border-b h-24 mb-8 py-4" role="banner">
             <div class="container flex items-center max-w-8xl mx-auto px-4 lg:px-8">
                 <div class="flex items-center">
+                    
                     <a href="/" title="{{ $page->siteName }} home" class="inline-flex items-center">
-                        <img class="h-8 md:h-10 mr-3" src="/assets/img/logo.svg" alt="{{ $page->siteName }} logo" />
-
+                        <img class="h-8 md:h-10 mr-3" src="/assets/img/saturn.svg" alt="{{ $page->siteName }} logo" />
                         <h1 class="text-lg md:text-2xl text-blue-900 font-semibold hover:text-blue-600 my-0 pr-4">{{ $page->siteName }}</h1>
+                        <div class="flex flex-1 justify-end items-center text-right md:pl-10">
+    <div class="hidden md:flex items-center">
+        <a href="/" class="ml-6 text-gray-700 hover:text-blue-600">Beranda</a>
+        <a href="/docs/getting-started" class="ml-6 text-gray-700 hover:text-blue-600">Panduan</a>
+        <a href="https://github.com/kamu" class="ml-6 text-gray-700 hover:text-blue-600">paket</a>
+    </div>
+
+    @if ($page->docsearchApiKey && $page->docsearchIndexName)
+        @include('_nav.search-input')
+    @endif
+</div>
                     </a>
                 </div>
 

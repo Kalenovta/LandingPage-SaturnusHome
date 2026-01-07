@@ -5,8 +5,8 @@ use Illuminate\Support\Str;
 return [
     'baseUrl' => '',
     'production' => false,
-    'siteName' => 'Docs Starter Template',
-    'siteDescription' => 'Beautiful docs powered by Jigsaw',
+    'siteName' => 'Saturnus Home',
+    'siteDescription' => 'Wifinya orang keren',
 
     // Algolia DocSearch credentials
     'docsearchAppId' => env('DOCSEARCH_APP_ID'),
@@ -30,4 +30,27 @@ return [
     'url' => function ($page, $path) {
         return Str::startsWith($path, 'http') ? $path : '/' . trimPath($path);
     },
+
+    'collections' => [
+        'packages' =>[
+            'items' => function ($config){
+                $url = 'http://127.0.0.1:8000/api/wifi-packages';
+
+                $context = stream_context_create([
+                    "http" => ["header" => "Accept: application/json"]
+                ]);
+
+                $response = @file_get_contents($url, false, $context);
+
+                return collect(json_decode($response))->map(function ($item) {
+                    return [
+                        'name' => $item->name,
+                        'speed' => $item->speed_mbps,
+                        'price' => $item->price,
+                        'description' => $item->description ?? '',
+                    ];
+                });
+            }
+        ]
+    ]
 ];
