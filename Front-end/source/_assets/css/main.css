@@ -28,6 +28,10 @@
   }
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Syntax Highlight by Prism */
 /* https://prismjs.com/ */
 

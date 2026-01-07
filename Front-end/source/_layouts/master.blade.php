@@ -45,18 +45,32 @@
     </head>
 
     <body class="flex flex-col justify-between min-h-screen bg-gray-900 text-gray-300 leading-normal font-sans">
-        <header class="flex items-center shadow-sm bg-white border-b h-24 mb-8 py-4" role="banner">
+        <header class="sticky top-0 z-50 flex items-center shadow-sm bg-slate-950/80 backdrop-blur-lg border-b border-blue-500/20 h-15 mb-8 py-4 " role="banner">
             <div class="container flex items-center max-w-8xl mx-auto px-4 lg:px-8">
                 <div class="flex items-center">
                     
                     <a href="/" title="{{ $page->siteName }} home" class="inline-flex items-center">
-                        <img class="h-8 md:h-10 mr-3" src="/assets/img/saturn.svg" alt="{{ $page->siteName }} logo" />
-                        <h1 class="text-lg md:text-2xl text-blue-900 font-semibold hover:text-blue-600 my-0 pr-4">{{ $page->siteName }}</h1>
+                        <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+    class="w-8 h-8 text-white" 
+    style="color: white;">
+    
+    <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+    
+    <path d="M3.5 15C1 15 1 9 5 9c2 0 5 1.5 7 1.5s5-1.5 7-1.5c4 0 4 6 1.5 6-2 0-5-1.5-7-1.5s-5 1.5-7 1.5Z" />
+</svg>
+                        <h1 class="text-lg md:text-2xl text-blue-700 font-semibold hover:text-blue-600 my-0 pr-4 ms-5">{{ $page->siteName }}</h1>
                         <div class="flex flex-1 justify-end items-center text-right md:pl-10">
     <div class="hidden md:flex items-center">
-        <a href="/" class="ml-6 text-gray-700 hover:text-blue-600">Beranda</a>
-        <a href="/docs/getting-started" class="ml-6 text-gray-700 hover:text-blue-600">Panduan</a>
-        <a href="https://github.com/kamu" class="ml-6 text-gray-700 hover:text-blue-600">paket</a>
+        <a href="#beranda" class="ml-6 text-white hover:text-blue-600">Beranda</a>
+        <a href="#unggul" class="ml-6 text-white hover:text-blue-600">keunggulan</a>
+        <a href="#paket" class="ml-6 text-white hover:text-blue-600">paket</a>
     </div>
 
     @if ($page->docsearchApiKey && $page->docsearchIndexName)
@@ -80,7 +94,7 @@
             @yield('body')
         </main>
 
-        <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
+        <footer class="bg-gray-800 text-center text-sm mt-12 py-4" role="contentinfo">
             <ul class="flex flex-col md:flex-row justify-center">
                 <li class="md:mr-2">
                     &copy; <a href="https://tighten.co" title="Tighten website">Tighten</a> {{ date('Y') }}.
